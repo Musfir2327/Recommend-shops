@@ -1,0 +1,201 @@
+/* RecommendedShop.css */
+
+/* Base Styles */
+.shops-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 100px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.section-title {
+  font-size: 2rem;
+  color: #a54509;
+  text-align: center;
+  margin-bottom: 10px;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.section-subtitle {
+  color: #666;
+  text-align: center;
+  margin-bottom: 30px;
+  animation: fadeIn 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Grid Layout */
+.shops-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+/* Card Styles */
+.shop-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: cardEntrance 0.6s ease forwards;
+}
+
+@keyframes cardEntrance {
+  from { 
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.shop-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.image-container {
+  height: 180px;
+  overflow: hidden;
+  position: relative;
+}
+
+.shop-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.shop-card:hover .shop-image {
+  transform: scale(1.05);
+}
+
+/* Add a subtle overlay on hover */
+.image-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.03);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.shop-card:hover .image-container::after {
+  opacity: 1;
+}
+
+.shop-info {
+  padding: 15px;
+}
+
+.shop-info h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.2rem;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.shop-card:hover .shop-info h3 {
+  color: #a59309;
+}
+
+.shop-meta {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+}
+
+.type-tag {
+  background: #f1f2f6;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.shop-card:hover .type-tag {
+  background: #33a509;
+  color: white;
+}
+
+.shop-details {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Scroll to Top Button */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #a59309;
+  color: white;
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.scroll-top-btn.visible {
+  opacity: 1;
+}
+
+/* Card entrance animation delays */
+.shop-card:nth-child(1) { animation-delay: 0.1s; }
+.shop-card:nth-child(2) { animation-delay: 0.2s; }
+.shop-card:nth-child(3) { animation-delay: 0.3s; }
+.shop-card:nth-child(4) { animation-delay: 0.4s; }
+.shop-card:nth-child(5) { animation-delay: 0.5s; }
+.shop-card:nth-child(6) { animation-delay: 0.6s; }
+.shop-card:nth-child(7) { animation-delay: 0.7s; }
+.shop-card:nth-child(8) { animation-delay: 0.8s; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .shops-container {
+    padding: 20px;
+  }
+  
+  .shops-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+}
